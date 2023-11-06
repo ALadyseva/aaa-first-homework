@@ -1,0 +1,60 @@
+PS C:\Users\ladys\Avito-Analytics-Academy\issue-02> python -m pytest -v test_morze_decode.py
+================================================================================= test session starts =================================================================================
+platform win32 -- Python 3.11.5, pytest-7.4.3, pluggy-1.3.0 -- C:\Users\ladys\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\ladys\Avito-Analytics-Academy\issue-02
+plugins: cov-4.1.0
+collected 4 items
+
+test_morze_decode.py::test_decode[... --- ...-SOS] PASSED                                                                                                                        [ 25%] 
+test_morze_decode.py::test_decode[.-   .-   .--A A A] FAILED                                                                                                                     [ 50%]
+test_morze_decode.py::test_decode[.... .. --..--   .-- --- .-. .-.. -..-HI, WORLD] PASSED                                                                                        [ 75%] 
+test_morze_decode.py::test_decode[.---- ..---   -.-. -..-12 CD] FAILED                                                                                                           [100%] 
+
+====================================================================================== FAILURES ======================================================================================= 
+___________________________________________________________________________ test_decode[.-   .-   .--A A A] ___________________________________________________________________________ 
+
+source_string = '.-   .-   .-', result = 'A A A'
+
+    @pytest.mark.parametrize(
+        "source_string, result",
+        [
+            ('... --- ...', 'SOS'),
+            ('.-   .-   .-', 'A A A'),
+            ('.... .. --..--   .-- --- .-. .-.. -..', 'HI, WORLD'),
+            ('.---- ..---   -.-. -..', '12 CD'),
+        ],
+    )
+    def test_decode(source_string, result):
+>       assert decode(source_string) == result
+E       AssertionError: assert 'AAA' == 'A A A'
+E         - A A A
+E         ?  - -
+E         + AAA
+
+test_morze_decode.py:15: AssertionError
+______________________________________________________________________ test_decode[.---- ..---   -.-. -..-12 CD] ______________________________________________________________________ 
+
+source_string = '.---- ..---   -.-. -..', result = '12 CD'
+
+    @pytest.mark.parametrize(
+        "source_string, result",
+        [
+            ('... --- ...', 'SOS'),
+            ('.-   .-   .-', 'A A A'),
+            ('.... .. --..--   .-- --- .-. .-.. -..', 'HI, WORLD'),
+            ('.---- ..---   -.-. -..', '12 CD'),
+        ],
+    )
+    def test_decode(source_string, result):
+>       assert decode(source_string) == result
+E       AssertionError: assert '12CD' == '12 CD'
+E         - 12 CD
+E         ?   -
+E         + 12CD
+
+test_morze_decode.py:15: AssertionError
+=============================================================================== short test summary info =============================================================================== 
+FAILED test_morze_decode.py::test_decode[.-   .-   .--A A A] - AssertionError: assert 'AAA' == 'A A A'
+FAILED test_morze_decode.py::test_decode[.---- ..---   -.-. -..-12 CD] - AssertionError: assert '12CD' == '12 CD'
+============================================================================= 2 failed, 2 passed in 0.20s ============================================================================= 

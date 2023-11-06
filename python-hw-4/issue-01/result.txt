@@ -1,0 +1,30 @@
+PS C:\Users\ladys\Avito-Analytics-Academy\issue-01> python -m doctest -o NORMALIZE_WHITESPACE -v test_morze_encode.py  
+Trying:
+    encode('SOS') # doctest: +NORMALIZE_WHITESPACE
+Expecting:
+    '... --- ...'
+ok
+Trying:
+    encode('A A A') #doctest: -NORMALIZE_WHITESPACE
+Expecting:
+    '.-   .-   .-'
+ok
+Trying:
+    encode('12 CD') # doctest: -NORMALIZE_WHITESPACE
+Expecting:
+    '.---- ..---   -.-. -..'
+ok
+Trying:
+    encode('sos') # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+Expecting:
+    Traceback (most recent call last):
+    ...
+    KeyError: 's'
+ok
+1 items had no tests:
+    test_morze_encode
+1 items passed all tests:
+   4 tests in test_morze_encode.encode
+4 tests in 2 items.
+4 passed and 0 failed.
+Test passed.
